@@ -123,8 +123,16 @@ def __main():
                                    description="Merge YAML data from given files, dir or file glob",
                                    version="%" + "prog %s" % __version__,
                                    prog="yamlreader")
-    parser.add_option("--debug", dest="debug", action="store_true", default=False,
+    parser.add_option("--debug",
+                      dest="debug",
+                      action="store_true",
+                      default=False,
                       help="Enable debug logging [%default]")
+    parser.add_option("--width",
+                      dest="width",
+                      metavar="WIDTH",
+                      default=220,
+                      help="The width of lines [%default]")
     options, args = parser.parse_args()
     if options.debug:
         logger = logging.getLogger()
@@ -137,7 +145,7 @@ def __main():
         parser.error("Need at least one argument")
     try:
         print(safe_dump(yaml_load(args, defaultdata={}),
-                        indent=2, width=220, default_flow_style=False, canonical=False))
+                        indent=2, width=options.width, default_flow_style=False, canonical=False))
     except Exception as e:
         parser.error(e)
 
