@@ -131,6 +131,7 @@ def __main():
     parser.add_option("--width",
                       dest="width",
                       metavar="WIDTH",
+                      type="int",
                       default=220,
                       help="The width of lines [%default]")
     options, args = parser.parse_args()
