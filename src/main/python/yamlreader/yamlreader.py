@@ -2,7 +2,7 @@ from __future__ import print_function, absolute_import, unicode_literals, divisi
 
 __version__ = '3.0.3'
 
-from yaml import MarkedYAMLError, safe_load, safe_dump, dump
+from yaml import MarkedYAMLError, safe_load, safe_dump
 import glob
 import os
 import logging
@@ -136,8 +136,8 @@ def __main():
     if not args:
         parser.error("Need at least one argument")
     try:
-        print(dump(yaml_load(args, defaultdata={}),
-                        indent=4, default_flow_style=False, canonical=False))
+        print(safe_dump(yaml_load(args, defaultdata={}),
+                        indent=2, width=220, default_flow_style=False, canonical=False))
     except Exception as e:
         parser.error(e)
 
